@@ -1,0 +1,21 @@
+clear
+set memory 10m
+cd c:/data
+import excel 1.xlsx, first row
+br chi #中文字符变量
+encode chi, gen(chi2)
+save 1.dta,replace
+
+clear
+import excel 2.xlsx, first row
+br chi #中文字符变量
+encode chi, gen(chi2)
+save 2.dta,replace 
+close
+
+use 1,clear
+sort chi2
+save, replace
+use 2,clear
+sort chi2
+merge m:m chi2 year using 1

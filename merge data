@@ -19,3 +19,9 @@ save, replace
 use 2,clear
 sort chi2
 merge m:m chi2 year using 1
+
+对于地区这一变量,一般是将其进行转换.假设地区变量名为region,具体的操作命令是：
+encode,gen(region1) /重新生成一个带标签值的变量/
+drop region /去掉原来的地区变量/
+rename region1 region /将region1的名称改为region/
+这时候region的颜色应该为蓝色,进行时间序列或面板数据的设定就没有问题了.

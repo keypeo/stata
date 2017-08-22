@@ -1,7 +1,7 @@
 clear
 set memory 10m
-cd c:/data
-import excel 1.xlsx, first row
+cd c:\data
+import excel 1.xlsx, first row or import excel "C:\data\1.xlsx", sheet("sheet1") firstrow
 br chi #中文字符变量
 encode chi, gen(chi2)
 save 1.dta,replace
@@ -25,3 +25,8 @@ encode,gen(region1) /重新生成一个带标签值的变量/
 drop region /去掉原来的地区变量/
 rename region1 region /将region1的名称改为region/
 这时候region的颜色应该为蓝色,进行时间序列或面板数据的设定就没有问题了.
+
+
+sort date
+gen time=_n  生成连续时间变量
+drop if time<时间节点
